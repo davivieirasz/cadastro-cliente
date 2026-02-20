@@ -28,25 +28,31 @@ uses
 
 type
   TDM = class(TDataModule)
-    mySQLdll          : TFDPhysMySQLDriverLink;
-    conexao           : TFDConnection;
-    selectCli         : TFDQuery;
-    DSCliente         : TDataSource;
-    execCli           : TFDQuery;
-    selectUsu         : TFDQuery;
-    selectCliid       : TFDAutoIncField;
-    selectClinome     : TStringField;
-    selectClicpf      : TStringField;
-    selectCliemail    : TStringField;
-    selectClitelefone : TStringField;
-    selectCliendereco : TStringField;
-    selectClinumero   : TStringField;
-    selectClibairro   : TStringField;
-    selectClicidade   : TStringField;
-    selectCliuf       : TStringField;
-    selectClistatus   : TStringField;
-    execUsu           : TFDQuery;
-    DSUsuario         : TDataSource;
+    mySQLdll              : TFDPhysMySQLDriverLink;
+    conexao               : TFDConnection;
+    selectCli             : TFDQuery;
+    DSCliente             : TDataSource;
+    execCli               : TFDQuery;
+    selectUsu             : TFDQuery;
+    selectCliid           : TFDAutoIncField;
+    selectClinome         : TStringField;
+    selectClicpf          : TStringField;
+    selectCliemail        : TStringField;
+    selectClitelefone     : TStringField;
+    selectCliendereco     : TStringField;
+    selectClinumero       : TStringField;
+    selectClibairro       : TStringField;
+    selectClicidade       : TStringField;
+    selectCliuf           : TStringField;
+    selectClistatus       : TStringField;
+    execUsu               : TFDQuery;
+    DSUsuario             : TDataSource;
+    selectUsuid           : TFDAutoIncField;
+    selectUsunome         : TStringField;
+    selectUsuemail        : TStringField;
+    selectUsuusuario      : TStringField;
+    selectUsusenha        : TStringField;
+    selectUsutipo_usuario : TStringField;
 
     procedure selectClicpfGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);

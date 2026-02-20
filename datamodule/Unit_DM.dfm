@@ -111,6 +111,41 @@ object DM: TDM
       'SELECT * FROM E000usu')
     Left = 120
     Top = 120
+    object selectUsuid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object selectUsunome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+      Required = True
+      Size = 100
+    end
+    object selectUsuemail: TStringField
+      FieldName = 'email'
+      Origin = 'email'
+      Required = True
+      Size = 100
+    end
+    object selectUsuusuario: TStringField
+      FieldName = 'usuario'
+      Origin = 'usuario'
+      Required = True
+      Size = 50
+    end
+    object selectUsusenha: TStringField
+      FieldName = 'senha'
+      Origin = 'senha'
+      Required = True
+      Size = 50
+    end
+    object selectUsutipo_usuario: TStringField
+      FieldName = 'tipo_usuario'
+      Origin = 'tipo_usuario'
+      Required = True
+    end
   end
   object execUsu: TFDQuery
     MasterSource = DSUsuario
