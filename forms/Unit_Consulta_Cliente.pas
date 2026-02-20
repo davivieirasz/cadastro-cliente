@@ -23,7 +23,7 @@ uses
   Vcl.Consts;
 
 type
-  Tfrm_consulta_cliente = class(TForm)
+  TfrmConsultaCliente = class(TForm)
     pnlPrincipal      : TPanel;
     pnlTitulo         : TPanel;
     dbgridDados       : TDBGrid;
@@ -49,6 +49,7 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnLimparBuscaClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -57,7 +58,7 @@ type
   end;
 
 var
-  frm_consulta_cliente: Tfrm_consulta_cliente;
+  frmConsultaCliente: TfrmConsultaCliente;
 
 implementation
 
@@ -66,7 +67,7 @@ implementation
 Uses Unit_DM;
 
 
-procedure Tfrm_consulta_cliente.bntBuscarClick(Sender: TObject);
+procedure TfrmConsultaCliente.bntBuscarClick(Sender: TObject);
 
 var
   busca: string;
@@ -115,14 +116,13 @@ begin
           'SELECT * FROM E000CLI WHERE cpf LIKE :pBusca';
         DM.selectCli.ParamByName('pBusca').AsString := '%' + busca + '%';
       end;
-
   end;
 
   DM.selectCli.Open;
 end;
 
 
-procedure Tfrm_consulta_cliente.btnCancelarClick(Sender: TObject);
+procedure TfrmConsultaCliente.btnCancelarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja cancelar a edição?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
   begin
@@ -131,21 +131,23 @@ begin
     pnlModo.Color        := clWhite;
     btnCancelar.Visible  := False;
     btnEditar.Visible    := True;
+    btnSalvar.Enabled    := False;
   end;
 end;
 
 
-procedure Tfrm_consulta_cliente.btnEditarClick(Sender: TObject);
+procedure TfrmConsultaCliente.btnEditarClick(Sender: TObject);
 begin
   dbgridDados.ReadOnly := False;
   pnlModo.Caption      := 'MODO: EDIÇÃO';
   pnlModo.Color        := clRed;
   btnEditar.Visible    := False;
   btnCancelar.Visible  := True;
+  btnSalvar.Enabled    := True;
 end;
 
 
-procedure Tfrm_consulta_cliente.btnExcluirClick(Sender: TObject);
+procedure TfrmConsultaCliente.btnExcluirClick(Sender: TObject);
 begin
  if Application.MessageBox('Excluir esta linha?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
  begin
@@ -154,23 +156,25 @@ begin
 end;
 
 
-procedure Tfrm_consulta_cliente.btnLimparBuscaClick(Sender: TObject);
+procedure TfrmConsultaCliente.btnLimparBuscaClick(Sender: TObject);
 begin
   editValor.Clear;
-
   DM.selectCli.SQL.Text := 'SELECT * FROM E000CLI';
   DM.selectCli.Open;
   Exit;
 end;
 
 
-procedure Tfrm_consulta_cliente.btnSalvarClick(Sender: TObject);
+procedure TfrmConsultaCliente.btnSalvarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja salvar as alterações?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
   begin
     dbgridDados.ReadOnly := True;
     pnlModo.Caption      := 'MODO: CONSULTA';
     pnlModo.Color        := clWhite;
+    btnCancelar.Visible  := False;
+    btnSalvar.Enabled    := False;
+    btnEditar.Visible    := True;
 
     with dbgridDados.DataSource.DataSet do
     begin
@@ -185,7 +189,6 @@ begin
     dbgridDados.ReadOnly := True;
     pnlModo.Caption      := 'MODO: CONSULTA';
     pnlModo.Color        := clWhite;
-
     DM.selectCli.SQL.Text := 'SELECT * FROM E000CLI';
     DM.selectCli.Open;
     Exit;
@@ -193,9 +196,24 @@ begin
 end;
 
 
-procedure Tfrm_consulta_cliente.FormActivate(Sender: TObject);
+procedure TfrmConsultaCliente.FormActivate(Sender: TObject);
 begin
   cbFiltros.ItemIndex := 0;
+end;
+
+
+procedure TfrmConsultaCliente.FormShow(Sender: TObject);
+begin
+  if dbgridDados.DataSource.DataSet.IsEmpty then
+  begin
+    btnEditar.Enabled  := False;
+    btnExcluir.Enabled := False;
+  end
+  else
+  begin
+    btnEditar.Enabled := True;
+    btnExcluir.Enabled := True;
+  end;
 end;
 
 end.
