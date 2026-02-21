@@ -126,12 +126,16 @@ procedure TfrmConsultaCliente.btnCancelarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja cancelar a edição?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
   begin
-    dbgridDados.ReadOnly := True;
-    pnlModo.Caption      := 'MODO: CONSULTA';
-    pnlModo.Color        := clWhite;
-    btnCancelar.Visible  := False;
-    btnEditar.Visible    := True;
-    btnSalvar.Enabled    := False;
+    dbgridDados.ReadOnly  := True;
+    pnlModo.Caption       := 'MODO: CONSULTA';
+    pnlModo.Color         := clWhite;
+    btnCancelar.Visible   := False;
+    btnEditar.Visible     := True;
+    btnSalvar.Enabled     := False;
+    dbgridDados.Options   := dbgridDados.Options - [dgEditing];
+    DM.selectCli.SQL.Text := 'SELECT * FROM E000CLI';
+    DM.selectCli.Open;
+    Exit;
   end;
 end;
 
@@ -144,6 +148,7 @@ begin
   btnEditar.Visible    := False;
   btnCancelar.Visible  := True;
   btnSalvar.Enabled    := True;
+  dbgridDados.Options  := dbgridDados.Options + [dgEditing];
 end;
 
 
@@ -175,6 +180,7 @@ begin
     btnCancelar.Visible  := False;
     btnSalvar.Enabled    := False;
     btnEditar.Visible    := True;
+    dbgridDados.Options  := dbgridDados.Options - [dgEditing];
 
     with dbgridDados.DataSource.DataSet do
     begin
@@ -184,15 +190,6 @@ begin
       end;
     end;
   end
-  else
-  begin
-    dbgridDados.ReadOnly := True;
-    pnlModo.Caption      := 'MODO: CONSULTA';
-    pnlModo.Color        := clWhite;
-    DM.selectCli.SQL.Text := 'SELECT * FROM E000CLI';
-    DM.selectCli.Open;
-    Exit;
-  end;
 end;
 
 
@@ -211,7 +208,7 @@ begin
   end
   else
   begin
-    btnEditar.Enabled := True;
+    btnEditar.Enabled  := True;
     btnExcluir.Enabled := True;
   end;
 end;

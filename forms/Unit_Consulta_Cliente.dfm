@@ -65,6 +65,7 @@ object frmConsultaCliente: TfrmConsultaCliente
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         ParentFont = False
         ParentShowHint = False
         ReadOnly = True
@@ -237,7 +238,7 @@ object frmConsultaCliente: TfrmConsultaCliente
         end
         object btnSalvar: TButton
           Left = 6
-          Top = 63
+          Top = 48
           Width = 75
           Height = 25
           Cursor = crHandPoint
@@ -248,7 +249,7 @@ object frmConsultaCliente: TfrmConsultaCliente
         end
         object btnExcluir: TButton
           Left = 6
-          Top = 110
+          Top = 79
           Width = 75
           Height = 25
           Cursor = crHandPoint
@@ -316,8 +317,6 @@ object frmConsultaCliente: TfrmConsultaCliente
           Font.Name = 'Segoe UI'
           Font.Style = []
           ParentFont = False
-          ExplicitLeft = 2
-          ExplicitTop = 39
         end
         object bntBuscar: TButton
           Left = 1407
