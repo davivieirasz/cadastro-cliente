@@ -1,4 +1,4 @@
-﻿object frm_cadastro_cliente: Tfrm_cadastro_cliente
+﻿object frmCadastroCliente: TfrmCadastroCliente
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
@@ -21,7 +21,6 @@
     Height = 496
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 399
     object pnlCliente: TPanel
       Left = 1
       Top = 1
@@ -31,7 +30,6 @@
       Color = clSilver
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 397
       object gpboxNovoCadastro: TGroupBox
         Left = 1
         Top = 1
@@ -43,10 +41,9 @@
         ParentBackground = False
         ParentColor = False
         TabOrder = 0
-        ExplicitWidth = 395
         object lbCpf: TLabel
           Left = 41
-          Top = 140
+          Top = 141
           Width = 101
           Height = 21
           Caption = 'CPF/CNPJ:'
@@ -59,7 +56,7 @@
         end
         object lbEmail: TLabel
           Left = 85
-          Top = 194
+          Top = 196
           Width = 57
           Height = 21
           Caption = 'E-mail:'
@@ -71,11 +68,11 @@
           ParentFont = False
         end
         object lbNomeCliente: TLabel
-          Left = 16
-          Top = 106
-          Width = 126
+          Left = 91
+          Top = 109
+          Width = 51
           Height = 21
-          Caption = 'Nome completo:'
+          Caption = 'Nome:'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -85,7 +82,7 @@
         end
         object lbTelefone: TLabel
           Left = 70
-          Top = 167
+          Top = 170
           Width = 72
           Height = 21
           Cursor = crHandPoint
@@ -112,7 +109,7 @@
         end
         object lbNumero: TLabel
           Left = 114
-          Top = 252
+          Top = 254
           Width = 28
           Height = 21
           Caption = 'N'#186':'
@@ -125,7 +122,7 @@
         end
         object lbBairro: TLabel
           Left = 84
-          Top = 285
+          Top = 283
           Width = 58
           Height = 21
           Caption = 'Bairro:'
@@ -138,7 +135,7 @@
         end
         object lbCidade: TLabel
           Left = 82
-          Top = 314
+          Top = 312
           Width = 60
           Height = 21
           Caption = 'Cidade:'
@@ -268,7 +265,6 @@
           ParentBackground = False
           ParentFont = False
           TabOrder = 11
-          ExplicitWidth = 391
         end
         object editEndereco: TEdit
           Left = 148

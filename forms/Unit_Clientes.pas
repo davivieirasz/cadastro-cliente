@@ -22,7 +22,7 @@ uses
   Vcl.NumberBox;
 
 type
-  Tfrm_cadastro_cliente = class(TForm)
+  TfrmCadastroCliente = class(TForm)
     pnl_clientes      : TPanel;
     pnlCliente        : TPanel;
     lbNomeCliente     : TLabel;
@@ -63,7 +63,7 @@ type
   end;
 
 var
-  frm_cadastro_cliente  : Tfrm_cadastro_cliente;
+  frmCadastroCliente  : TfrmCadastroCliente;
 
 implementation
 
@@ -73,7 +73,7 @@ uses Unit_DM;
 
 
 //Aceita só números no campo de CPF/CNPJ
-procedure Tfrm_cadastro_cliente.editCpfKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmCadastroCliente.editCpfKeyPress(Sender: TObject; var Key: Char);
 begin
   if not (Key in ['0'..'9', #8]) then
   begin
@@ -87,14 +87,14 @@ end;
 
 
 //Já puxa com situação Ativo no formulário de cadastro
-procedure Tfrm_cadastro_cliente.FormActivate(Sender: TObject);
+procedure TfrmCadastroCliente.FormActivate(Sender: TObject);
 begin
   rbtnAtivo.Checked := True;
 end;
 
 
 //Realiza o cadastro no BD
-procedure Tfrm_cadastro_cliente.pnlBtnCadastrarClick(Sender: TObject);
+procedure TfrmCadastroCliente.pnlBtnCadastrarClick(Sender: TObject);
 
   var
     status      : string;
@@ -177,7 +177,7 @@ begin
     DM.selectCli.Close;
     DM.selectCli.Open;
 
-    Application.MessageBox('Cliente cadastrado com sucesso!', 'Aviso.');
+    Application.MessageBox('Cliente cadastrado com sucesso!', 'Confirmação.');
 
     //Limpa dados do formulário após o cadastro
       editNome.Clear;
@@ -205,13 +205,13 @@ begin
 end;
 
 
-procedure Tfrm_cadastro_cliente.pnlBtnCadastrarMouseEnter(Sender: TObject);
+procedure TfrmCadastroCliente.pnlBtnCadastrarMouseEnter(Sender: TObject);
 begin
   pnlBtnCadastrar.Color := $0000FF80;
 end;
 
 
-procedure Tfrm_cadastro_cliente.pnlBtnCadastrarMouseLeave(Sender: TObject);
+procedure TfrmCadastroCliente.pnlBtnCadastrarMouseLeave(Sender: TObject);
 begin
   pnlBtnCadastrar.Color := clgreen;
 end;
