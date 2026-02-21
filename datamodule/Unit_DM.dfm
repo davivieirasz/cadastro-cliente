@@ -19,6 +19,7 @@ object DM: TDM
   end
   object selectCli: TFDQuery
     Active = True
+    BeforeInsert = selectCliBeforeInsert
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM E000CLI')
@@ -100,12 +101,13 @@ object DM: TDM
     MasterSource = DSCliente
     Connection = conexao
     SQL.Strings = (
-      'SELECT * FROM E000CLI')
+      '')
     Left = 48
     Top = 248
   end
   object selectUsu: TFDQuery
     Active = True
+    BeforeInsert = selectUsuBeforeInsert
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM E000usu')
@@ -151,7 +153,7 @@ object DM: TDM
     MasterSource = DSUsuario
     Connection = conexao
     SQL.Strings = (
-      'SELECT * FROM E000CLI')
+      '')
     Left = 116
     Top = 248
   end

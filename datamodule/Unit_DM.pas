@@ -56,6 +56,8 @@ type
 
     procedure selectClicpfGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
+    procedure selectCliBeforeInsert(DataSet: TDataSet);
+    procedure selectUsuBeforeInsert(DataSet: TDataSet);
 
   private
     { Private declarations }
@@ -71,6 +73,12 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+
+procedure TDM.selectCliBeforeInsert(DataSet: TDataSet);
+begin
+  Abort;
+end;
 
 
 procedure TDM.selectClicpfGetText(Sender: TField; var Text: string;
@@ -96,6 +104,12 @@ begin
   begin
     Text := Sender.AsString;
   end;
+end;
+
+
+procedure TDM.selectUsuBeforeInsert(DataSet: TDataSet);
+begin
+  Abort;
 end;
 
 end.
