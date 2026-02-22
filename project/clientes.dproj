@@ -105,6 +105,7 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>clientes_Icon.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -127,27 +128,25 @@
         </DelphiCompile>
         <DCCReference Include="..\forms\Unit_Principal.pas">
             <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\forms\Unit_Clientes.pas">
-            <Form>frm_cadastro_cliente</Form>
-            <FormType>dfm</FormType>
+            <Form>frmCadastroCliente</Form>
         </DCCReference>
         <DCCReference Include="..\datamodule\Unit_DM.pas">
             <Form>DM</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="..\forms\Unit_Consulta_Cliente.pas">
-            <Form>frm_consulta_cliente</Form>
-            <FormType>dfm</FormType>
+            <Form>frmConsultaCliente</Form>
         </DCCReference>
         <DCCReference Include="..\forms\Unit_Login.pas">
             <Form>frmLogin</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\forms\Unit_Usuarios.pas">
             <Form>frmCadastroUsuario</Form>
+        </DCCReference>
+        <DCCReference Include="..\forms\Unit_Consulta_Usuario.pas">
+            <Form>frmConsultaUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
