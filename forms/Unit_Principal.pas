@@ -25,19 +25,19 @@ type
     pnlMenuLateral      : TPanel;
     btnSair             : TSpeedButton;
     btnClientes         : TSpeedButton;
-    pnlRodape           : TPanel;
-    lbRodape            : TLabel;
     pgcInicio           : TPageControl;
     tsInicio            : TTabSheet;
     pnlInicio           : TPanel;
     btnConsultaCliente  : TSpeedButton;
     imgPrincipal        : TImage;
     btnNovoUsuario      : TSpeedButton;
+    btnConsultaUsuario  : TSpeedButton;
 
     procedure btnClientesClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnConsultaClienteClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
+    procedure btnConsultaUsuarioClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -52,27 +52,37 @@ implementation
 
 {$R *.dfm}
 
-uses Unit_Clientes, Unit_Consulta_Cliente, Unit_Usuarios;
+uses Unit_Clientes, Unit_Consulta_Cliente, Unit_Usuarios, Unit_Consulta_Usuario;
 
 
 //Abertura do formulário de consulta de cliente
 procedure TfrmPrincipal.btnConsultaClienteClick(Sender: TObject);
+
+Var
+  frmCliente: TfrmConsultaCliente;
+
 begin
-  if not Assigned(frm_consulta_cliente) then
-  begin
-    Application.CreateForm(Tfrm_consulta_cliente, frm_consulta_cliente);
-    frm_consulta_cliente.ShowModal;
+  frmCliente := TfrmConsultaCliente.Create(Self);
+  try
+    frmCliente.ShowModal;
+  finally
+    frmCliente.Free;
   end;
 end;
 
 
 //Abertura do formulário de cadastro de usuário
 procedure TfrmPrincipal.btnNovoUsuarioClick(Sender: TObject);
+
+Var
+  frmUsuario: TfrmCadastroUsuario;
+
 begin
-  if not Assigned(frmCadastroUsuario) then
-  begin
-    Application.CreateForm(TfrmCadastroUsuario, frmCadastroUsuario);
-    frmCadastroUsuario.ShowModal;
+  frmUsuario := TfrmCadastroUsuario.Create(Self);
+  try
+    frmUsuario.ShowModal;
+  finally
+    frmUsuario.Free;
   end;
 end;
 
@@ -87,13 +97,32 @@ begin
 end;
 
 
+procedure TfrmPrincipal.btnConsultaUsuarioClick(Sender: TObject);
+
+Var
+  frmUsuario: TfrmConsultaUsuario;
+begin
+  frmUsuario := TfrmConsultaUsuario.Create(Self);
+  try
+    frmUsuario.ShowModal;
+  finally
+    frmUsuario.Free;
+  end;
+end;
+
+
 //Abertura do formulário de cadastro de cliente
 procedure TfrmPrincipal.btnClientesClick(Sender: TObject);
+
+Var
+  frmCliente: TfrmCadastroCliente;
+
 begin
-  if not Assigned(frm_cadastro_cliente) then
-  begin
-    Application.CreateForm(Tfrm_cadastro_cliente, frm_cadastro_cliente);
-    frm_cadastro_cliente.ShowModal;
+  frmCliente := TfrmCadastroCliente.Create(Self);
+  try
+    frmCliente.ShowModal;
+  finally
+    frmCliente.Free;
   end;
 end;
 
