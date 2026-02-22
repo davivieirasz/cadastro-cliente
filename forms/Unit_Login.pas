@@ -88,9 +88,7 @@ begin
     Exit;
   end;
 
-  Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  frmPrincipal.Show;
-  Self.Hide;
+  ModalResult := mrOk;
 end;
 
 
