@@ -11,6 +11,8 @@ object frmConsultaUsuario: TfrmConsultaUsuario
   Font.Style = []
   Position = poDesktopCenter
   WindowState = wsMaximized
+  OnActivate = FormActivate
+  OnShow = FormShow
   TextHeight = 15
   object pnlPrincipal: TPanel
     Left = 0
@@ -19,8 +21,6 @@ object frmConsultaUsuario: TfrmConsultaUsuario
     Height = 595
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1007
-    ExplicitHeight = 546
     object pnlTitulo: TPanel
       Left = 1
       Top = 1
@@ -37,19 +37,15 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1005
     end
     object pnlMenuLateral: TPanel
       Left = 1263
       Top = 137
       Width = 112
-      Height = 457
+      Height = 435
       Align = alRight
       BorderStyle = bsSingle
       TabOrder = 1
-      ExplicitLeft = 894
-      ExplicitTop = 129
-      ExplicitHeight = 416
       object btnEditar: TButton
         Left = 16
         Top = 24
@@ -57,6 +53,7 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Height = 25
         Caption = 'Editar'
         TabOrder = 0
+        OnClick = btnEditarClick
       end
       object btnCancelar: TButton
         Left = 16
@@ -65,6 +62,8 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Height = 25
         Caption = 'Cancelar'
         TabOrder = 1
+        Visible = False
+        OnClick = btnCancelarClick
       end
       object btnSalvar: TButton
         Left = 16
@@ -72,7 +71,9 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Width = 75
         Height = 25
         Caption = 'Salvar'
+        Enabled = False
         TabOrder = 2
+        OnClick = btnSalvarClick
       end
       object btnExcluir: TButton
         Left = 16
@@ -81,6 +82,7 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Height = 25
         Caption = 'Excluir'
         TabOrder = 3
+        OnClick = btnExcluirClick
       end
     end
     object gbInfo: TGroupBox
@@ -91,8 +93,6 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       Align = alTop
       Caption = 'Filtros de Busca'
       TabOrder = 2
-      ExplicitTop = 65
-      ExplicitWidth = 1005
       object lbValor: TLabel
         Left = 2
         Top = 40
@@ -112,15 +112,15 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Left = 2
         Top = 17
         Width = 1370
-        Height = 23
+        Height = 22
         Align = alTop
+        Style = csOwnerDrawFixed
         TabOrder = 0
         Items.Strings = (
           'SELECIONE '
           'ID'
           'NOME'
           'USU'#193'RIO')
-        ExplicitWidth = 1001
       end
       object editValor: TEdit
         Left = 35
@@ -129,7 +129,6 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Height = 22
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 968
         ExplicitHeight = 23
       end
       object btnBuscar: TButton
@@ -140,7 +139,7 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Align = alRight
         Caption = 'Buscar'
         TabOrder = 2
-        ExplicitLeft = 836
+        OnClick = btnBuscarClick
       end
       object btnLimparBusca: TButton
         Left = 1280
@@ -150,7 +149,7 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Align = alRight
         Caption = 'Limpar Busca'
         TabOrder = 3
-        ExplicitLeft = 911
+        OnClick = btnLimparBuscaClick
       end
     end
     object dbgridDados: TDBGrid
@@ -158,7 +157,7 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       Left = 4
       Top = 140
       Width = 1256
-      Height = 451
+      Height = 429
       Align = alClient
       Color = clWhite
       DataSource = DM.DSUsuario
@@ -170,8 +169,10 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       ParentShowHint = False
+      ReadOnly = True
       ShowHint = False
       TabOrder = 3
       TitleFont.Charset = DEFAULT_CHARSET
@@ -251,6 +252,23 @@ object frmConsultaUsuario: TfrmConsultaUsuario
           Width = 120
           Visible = True
         end>
+    end
+    object pnlModo: TPanel
+      Left = 1
+      Top = 572
+      Width = 1374
+      Height = 22
+      Align = alBottom
+      Caption = 'MODO: CONSULTA'
+      Color = clWhite
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
     end
   end
 end
