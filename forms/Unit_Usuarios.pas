@@ -117,7 +117,7 @@ begin
     DM.selectUsu.Close;
     DM.selectUsu.Open;
 
-    Application.MessageBox('Usuário cadastrado com sucesso!', 'Aviso.');
+    Application.MessageBox('Usuário cadastrado com sucesso!', 'Confirmação.');
 
     //Limpa dados do formulário após o cadastro
     edtNomeUsu.Clear;
@@ -138,7 +138,6 @@ begin
             MB_OK or MB_ICONERROR);
     end;
   end;
-
 end;
 
 

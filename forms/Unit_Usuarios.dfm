@@ -21,7 +21,6 @@ object frmCadastroUsuario: TfrmCadastroUsuario
     Color = clSilver
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 523
     object gbTitulo: TGroupBox
       Left = 1
       Top = 1
@@ -33,13 +32,12 @@ object frmCadastroUsuario: TfrmCadastroUsuario
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      ExplicitWidth = 521
       object lbNomeUsu: TLabel
-        Left = 56
-        Top = 104
-        Width = 126
+        Left = 131
+        Top = 105
+        Width = 51
         Height = 21
-        Caption = 'Nome completo:'
+        Caption = 'Nome:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -16
@@ -49,7 +47,7 @@ object frmCadastroUsuario: TfrmCadastroUsuario
       end
       object lbEmailUsu: TLabel
         Left = 125
-        Top = 133
+        Top = 134
         Width = 57
         Height = 21
         Caption = 'E-mail:'
@@ -62,7 +60,7 @@ object frmCadastroUsuario: TfrmCadastroUsuario
       end
       object lbLoginUsu: TLabel
         Left = 114
-        Top = 162
+        Top = 163
         Width = 68
         Height = 21
         Caption = 'Usu'#225'rio:'
@@ -75,7 +73,7 @@ object frmCadastroUsuario: TfrmCadastroUsuario
       end
       object lbSenhaUsu: TLabel
         Left = 129
-        Top = 191
+        Top = 192
         Width = 53
         Height = 21
         Caption = 'Senha:'
@@ -102,7 +100,6 @@ object frmCadastroUsuario: TfrmCadastroUsuario
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
-        ExplicitWidth = 517
       end
       object edtNomeUsu: TEdit
         Left = 188
