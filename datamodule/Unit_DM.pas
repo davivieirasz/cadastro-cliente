@@ -24,7 +24,7 @@ uses
   FireDAC.DApt.Intf,
   FireDAC.DApt,
   FireDAC.Comp.DataSet,
-  System.MaskUtils;
+  System.MaskUtils, FireDAC.Phys.FB, FireDAC.Phys.FBDef;
 
 type
   TDM = class(TDataModule)
