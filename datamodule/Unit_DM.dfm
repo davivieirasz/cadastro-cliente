@@ -10,9 +10,12 @@ object DM: TDM
   end
   object conexao: TFDConnection
     Params.Strings = (
-      'User_Name=root'
-      'Database=cliente'
-      'DriverID=MySQL')
+      
+        'Database=C:\Users\Davi Vieira\Desktop\Projetos Delphi\cadastro-c' +
+        'liente\datamodule\BD\cliente'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB')
     Connected = True
     Left = 48
     Top = 56
@@ -98,7 +101,6 @@ object DM: TDM
     Top = 184
   end
   object execCli: TFDQuery
-    MasterSource = DSCliente
     Connection = conexao
     SQL.Strings = (
       '')
@@ -150,7 +152,6 @@ object DM: TDM
     end
   end
   object execUsu: TFDQuery
-    MasterSource = DSUsuario
     Connection = conexao
     SQL.Strings = (
       '')
