@@ -22,8 +22,6 @@
     Color = clSilver
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1326
-    ExplicitHeight = 635
     object GroupBox1: TGroupBox
       Left = 1
       Top = 49
@@ -32,10 +30,6 @@
       Align = alClient
       Caption = 'Novo Cliente:'
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 55
-      ExplicitWidth = 1324
-      ExplicitHeight = 585
       object lbBairro: TLabel
         Left = 83
         Top = 235
@@ -337,7 +331,6 @@
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 1324
     end
   end
   object loClient: TRESTClient

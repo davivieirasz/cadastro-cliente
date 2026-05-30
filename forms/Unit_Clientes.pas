@@ -83,8 +83,7 @@ implementation
 uses Unit_DM;
 
 
-//Aceita só números no campo de CPF/CNPJ
-
+//Consumo API - VIACEP.
 procedure TfrmCadastroCliente.btnConsultarClick(Sender: TObject);
   var
   JSON: TJSONObject;
@@ -95,7 +94,7 @@ begin
   // valida CEP
   if Length(CEP) <> 8 then
   begin
-    Application.MessageBox('CEP inválido.','Aviso!');
+    Application.MessageBox('CEP inválido.','Aviso');
     Exit;
   end;
 
@@ -116,7 +115,7 @@ begin
         // verifica se CEP existe
         if JSON.GetValue('erro') <> nil then
         begin
-          Application.MessageBox('CEP não encontrado.','Aviso!');
+          Application.MessageBox('CEP não encontrado.','Aviso');
           Exit;
         end;
 
@@ -146,6 +145,7 @@ begin
   end;
 end;
 
+//Aceita só números no campo de CPF/CNPJ
 procedure TfrmCadastroCliente.editCpfKeyPress(Sender: TObject; var Key: Char);
 begin
   if not (Key in ['0'..'9', #8]) then
@@ -163,7 +163,6 @@ procedure TfrmCadastroCliente.FormActivate(Sender: TObject);
 begin
   rbtnAtivo.Checked := True;
 end;
-
 
 //Realiza o cadastro no BD
 procedure TfrmCadastroCliente.pnlBtnCadastrarClick(Sender: TObject);
@@ -213,13 +212,13 @@ begin
      (Trim(ufCli)       = '') then
 
   begin
-    Application.MessageBox('Por favor, preencha todos os campos.', 'Aviso.');
+    Application.MessageBox('Por favor, preencha todos os campos.', 'Aviso');
     Exit;
   end;
 
   if Pos('@', emailCli) = 0 then
   begin
-    Application.MessageBox('E-mail inválido!', 'Aviso.');
+    Application.MessageBox('E-mail inválido!', 'Aviso');
     Exit;
   end;
 
@@ -253,7 +252,7 @@ begin
     DM.selectCli.Close;
     DM.selectCli.Open;
 
-    Application.MessageBox('Cliente cadastrado com sucesso!', 'Confirmação.');
+    Application.MessageBox('Cliente cadastrado com sucesso!', 'Confirmação');
 
     //Limpa dados do formulário após o cadastro
       editNome.Clear;
@@ -281,13 +280,13 @@ begin
   end;
 end;
 
-
+//Cor do botão ao entrar
 procedure TfrmCadastroCliente.pnlBtnCadastrarMouseEnter(Sender: TObject);
 begin
   pnlBtnCadastrar.Color := $0000FF80;
 end;
 
-
+//Cor do botão ao sair
 procedure TfrmCadastroCliente.pnlBtnCadastrarMouseLeave(Sender: TObject);
 begin
   pnlBtnCadastrar.Color := clgreen;
