@@ -32,12 +32,15 @@ type
     imgPrincipal        : TImage;
     btnNovoUsuario      : TSpeedButton;
     btnConsultaUsuario  : TSpeedButton;
+    btnAbrirMenu        : TSpeedButton;
 
     procedure btnClientesClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
     procedure btnConsultaClienteClick(Sender: TObject);
     procedure btnNovoUsuarioClick(Sender: TObject);
     procedure btnConsultaUsuarioClick(Sender: TObject);
+    procedure btnAbrirMenuClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
 
   private
     { Private declarations }
@@ -47,12 +50,13 @@ type
 
 var
   frmPrincipal: TfrmPrincipal;
+  bExpandido  : Boolean;
 
 implementation
 
 {$R *.dfm}
 
-uses Unit_Clientes, Unit_Consulta_Cliente, Unit_Usuarios, Unit_Consulta_Usuario;
+uses Unit_Clientes, Unit_Consulta_Cliente, Unit_Usuarios, Unit_Consulta_Usuario, Unit_Sessao;
 
 
 //Abertura do formulário de consulta de cliente
@@ -70,7 +74,6 @@ begin
   end;
 end;
 
-
 //Abertura do formulário de cadastro de usuário
 procedure TfrmPrincipal.btnNovoUsuarioClick(Sender: TObject);
 
@@ -86,7 +89,6 @@ begin
   end;
 end;
 
-
 //Confirmação para sair do sistema
 procedure TfrmPrincipal.btnSairClick(Sender: TObject);
 begin
@@ -96,7 +98,17 @@ begin
     end
 end;
 
+//Oculta formulário de cadastro de usuário se <> Admin
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  if TipoUsuario <> 'Admin' then
+  begin
+    btnNovoUsuario.Visible     := False;
+    btnConsultaUsuario.Visible := False;
+  end;
+end;
 
+//Abertura do formulário de consulta de usuário
 procedure TfrmPrincipal.btnConsultaUsuarioClick(Sender: TObject);
 
 Var
@@ -110,6 +122,19 @@ begin
   end;
 end;
 
+//Abertura do menu lateral
+procedure TfrmPrincipal.btnAbrirMenuClick(Sender: TObject);
+begin
+  if bExpandido then
+  begin
+    pnlMenuLateral.Width := 50;
+  end
+  else
+  begin
+    pnlMenuLateral.Width := 190;
+  end;
+  bExpandido := not bExpandido;
+end;
 
 //Abertura do formulário de cadastro de cliente
 procedure TfrmPrincipal.btnClientesClick(Sender: TObject);
