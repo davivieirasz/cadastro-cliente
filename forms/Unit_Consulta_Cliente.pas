@@ -66,7 +66,7 @@ implementation
 
 Uses Unit_DM;
 
-
+//Consultar cliente - Filtros
 procedure TfrmConsultaCliente.bntBuscarClick(Sender: TObject);
 
 var
@@ -106,8 +106,8 @@ begin
     2: //NOME
       begin
         DM.selectCli.SQL.Text :=
-          'SELECT * FROM E000CLI WHERE nome LIKE :pBusca';
-        DM.selectCli.ParamByName('pBusca').AsString := '%' + busca + '%';
+          'SELECT * FROM E000CLI WHERE nome CONTAINING :pBusca';
+        DM.selectCli.ParamByName('pBusca').AsString := busca;
       end;
 
     3: //CPF
@@ -121,7 +121,7 @@ begin
   DM.selectCli.Open;
 end;
 
-
+//Cancelar edição
 procedure TfrmConsultaCliente.btnCancelarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja cancelar a edição?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -139,7 +139,7 @@ begin
   end;
 end;
 
-
+//Realizar edição
 procedure TfrmConsultaCliente.btnEditarClick(Sender: TObject);
 begin
   dbgridDados.ReadOnly := False;
@@ -151,7 +151,7 @@ begin
   dbgridDados.Options  := dbgridDados.Options + [dgEditing];
 end;
 
-
+//Excluir registro
 procedure TfrmConsultaCliente.btnExcluirClick(Sender: TObject);
 begin
  if Application.MessageBox('Excluir esta linha?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -160,7 +160,7 @@ begin
  end;
 end;
 
-
+//Limpar filtros
 procedure TfrmConsultaCliente.btnLimparBuscaClick(Sender: TObject);
 begin
   editValor.Clear;
@@ -169,7 +169,7 @@ begin
   Exit;
 end;
 
-
+//Salvar edição
 procedure TfrmConsultaCliente.btnSalvarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja salvar as alterações?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -192,13 +192,13 @@ begin
   end
 end;
 
-
+//Sem filtros ao abrir o formulário
 procedure TfrmConsultaCliente.FormActivate(Sender: TObject);
 begin
   cbFiltros.ItemIndex := 0;
 end;
 
-
+//Desabilita campos ao abrir o formulário
 procedure TfrmConsultaCliente.FormShow(Sender: TObject);
 begin
   if dbgridDados.DataSource.DataSet.IsEmpty then

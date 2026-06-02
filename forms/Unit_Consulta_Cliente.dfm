@@ -28,13 +28,13 @@ object frmConsultaCliente: TfrmConsultaCliente
       Width = 1595
       Height = 72
       Align = alTop
-      Caption = 'CARTEIRA DE CLIENTES'
+      Caption = 'CLIENTES'
       Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -29
-      Font.Name = 'Stencil'
-      Font.Style = []
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
@@ -338,7 +338,7 @@ object frmConsultaCliente: TfrmConsultaCliente
           Style = csOwnerDrawFixed
           TabOrder = 1
           Items.Strings = (
-            'SELECIONE '
+            'Selecione'
             'ID'
             'NOME'
             'CPF/CNPJ')
