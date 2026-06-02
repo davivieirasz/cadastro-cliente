@@ -1,13 +1,6 @@
 object DM: TDM
   Height = 362
   Width = 228
-  object mySQLdll: TFDPhysMySQLDriverLink
-    VendorLib = 
-      'C:\Users\Davi Vieira\Documents\GitHub\cadastro-cliente\libmysql.' +
-      'dll'
-    Left = 120
-    Top = 56
-  end
   object conexao: TFDConnection
     Params.Strings = (
       

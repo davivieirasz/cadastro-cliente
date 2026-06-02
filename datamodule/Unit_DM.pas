@@ -28,7 +28,6 @@ uses
 
 type
   TDM = class(TDataModule)
-    mySQLdll              : TFDPhysMySQLDriverLink;
     conexao               : TFDConnection;
     selectCli             : TFDQuery;
     DSCliente             : TDataSource;
