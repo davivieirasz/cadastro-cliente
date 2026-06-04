@@ -44,9 +44,10 @@ implementation
 
 {$R *.dfm}
 
-Uses Unit_Principal, Unit_DM;
+Uses Unit_Principal, Unit_DM, Unit_Sessao;
 
 
+//Fechar tela de login
 procedure TfrmLogin.btnCancelarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja fechar o sistema?', 'Confirmação', MB_YESNO + MB_ICONQUESTION) = IDYES then
@@ -55,7 +56,7 @@ begin
   end
 end;
 
-
+//Valida login do usuário
 procedure TfrmLogin.btnOkClick(Sender: TObject);
 
 var
@@ -66,11 +67,11 @@ begin
   usuario := edtLogin.Text;
   senha   := edtSenha.Text;
 
-    if (usuario = '') or (senha = '') then
-    begin
-      Application.MessageBox('Informe usuário e senha.', 'Autenticação.');
-      Exit;
-    end;
+  if (usuario = '') or (senha = '') then
+  begin
+    Application.MessageBox('Informe usuário e senha.', 'Autenticação');
+    Exit;
+  end;
 
   DM.selectUsu.Close;
   DM.selectUsu.SQL.Clear;
@@ -84,14 +85,16 @@ begin
 
   if  DM.selectUsu.IsEmpty then
   begin
-    Application.MessageBox('Usuário ou senha inválidos.', 'Aviso.');
+    Application.MessageBox('Usuário ou senha inválidos.', 'Aviso');
     Exit;
   end;
+
+  TipoUsuario := DM.selectUsu.FieldByName('TIPO_USUARIO').AsString;
 
   ModalResult := mrOk;
 end;
 
-
+// Define o foco inicial no campo de login
 procedure TfrmLogin.FormActivate(Sender: TObject);
 begin
   edtLogin.SetFocus;
