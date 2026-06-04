@@ -149,6 +149,7 @@
             <Form>frmConsultaUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\forms\Unit_Sessao.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
