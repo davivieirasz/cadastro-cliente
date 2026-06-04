@@ -27,13 +27,13 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       Width = 1374
       Height = 72
       Align = alTop
-      Caption = 'USU'#193'RIOS CADASTRADOS'
+      Caption = 'USU'#193'RIOS '
       Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -29
-      Font.Name = 'Stencil'
-      Font.Style = []
+      Font.Name = 'Georgia'
+      Font.Style = [fsBold]
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
@@ -95,9 +95,9 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       TabOrder = 2
       object lbValor: TLabel
         Left = 2
-        Top = 40
+        Top = 39
         Width = 33
-        Height = 22
+        Height = 23
         Align = alLeft
         Caption = 'Valor:'
         Font.Charset = DEFAULT_CHARSET
@@ -117,25 +117,24 @@ object frmConsultaUsuario: TfrmConsultaUsuario
         Style = csOwnerDrawFixed
         TabOrder = 0
         Items.Strings = (
-          'SELECIONE '
+          'Selecione'
           'ID'
           'NOME'
           'USU'#193'RIO')
       end
       object editValor: TEdit
         Left = 35
-        Top = 40
+        Top = 39
         Width = 1153
-        Height = 22
+        Height = 23
         Align = alClient
         TabOrder = 1
-        ExplicitHeight = 23
       end
       object btnBuscar: TButton
         Left = 1188
-        Top = 40
+        Top = 39
         Width = 92
-        Height = 22
+        Height = 23
         Align = alRight
         Caption = 'Buscar'
         TabOrder = 2
@@ -143,9 +142,9 @@ object frmConsultaUsuario: TfrmConsultaUsuario
       end
       object btnLimparBusca: TButton
         Left = 1280
-        Top = 40
+        Top = 39
         Width = 92
-        Height = 22
+        Height = 23
         Align = alRight
         Caption = 'Limpar Busca'
         TabOrder = 3
@@ -220,18 +219,6 @@ object frmConsultaUsuario: TfrmConsultaUsuario
           Expanded = False
           FieldName = 'usuario'
           Title.Caption = 'USU'#193'RIO'
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'Segoe UI'
-          Title.Font.Style = [fsBold]
-          Width = 200
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'senha'
-          Title.Caption = 'SENHA'
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clWindowText
           Title.Font.Height = -13
