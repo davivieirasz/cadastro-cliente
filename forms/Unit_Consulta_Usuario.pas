@@ -61,7 +61,7 @@ implementation
 
 Uses Unit_DM;
 
-
+//Consultar usuário - Filtros
 procedure TfrmConsultaUsuario.btnBuscarClick(Sender: TObject);
 
 var
@@ -116,7 +116,7 @@ begin
   DM.selectUsu.Open;
 end;
 
-
+//Cancelar edição
 procedure TfrmConsultaUsuario.btnCancelarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja cancelar a edição?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -134,7 +134,7 @@ begin
   end;
 end;
 
-
+//Realizar edição
 procedure TfrmConsultaUsuario.btnEditarClick(Sender: TObject);
 begin
   dbgridDados.ReadOnly := False;
@@ -146,7 +146,7 @@ begin
   dbgridDados.Options  := dbgridDados.Options + [dgEditing];
 end;
 
-
+//Excluir registro
 procedure TfrmConsultaUsuario.btnExcluirClick(Sender: TObject);
 begin
   if Application.MessageBox('Excluir esta linha?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -155,7 +155,7 @@ begin
  end;
 end;
 
-
+//Limpar filtros
 procedure TfrmConsultaUsuario.btnLimparBuscaClick(Sender: TObject);
 begin
   editValor.Clear;
@@ -164,7 +164,7 @@ begin
   Exit;
 end;
 
-
+//Salvar edição
 procedure TfrmConsultaUsuario.btnSalvarClick(Sender: TObject);
 begin
   if Application.MessageBox('Deseja salvar as alterações?','Confirmação', MB_ICONQUESTION or MB_YESNO) = IDYES then
@@ -187,13 +187,13 @@ begin
   end
 end;
 
-
+//Sem filtros ao abrir o formulário
 procedure TfrmConsultaUsuario.FormActivate(Sender: TObject);
 begin
   cbFiltros.ItemIndex := 0;
 end;
 
-
+//Desabilita campos ao abrir o formulário
 procedure TfrmConsultaUsuario.FormShow(Sender: TObject);
 begin
   if dbgridDados.DataSource.DataSet.IsEmpty then
