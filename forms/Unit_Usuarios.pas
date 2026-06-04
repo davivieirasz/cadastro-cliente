@@ -1,4 +1,4 @@
-unit Unit_Usuarios;
+﻿unit Unit_Usuarios;
 
 interface
 
@@ -30,6 +30,7 @@ type
     edtSenhaUsu   : TEdit;
     userAdm       : TCheckBox;
     pnlCadastrar  : TPanel;
+    gpSitUsuario  : TGroupBox;
 
     procedure pnlCadastrarMouseEnter(Sender: TObject);
     procedure pnlCadastrarMouseLeave(Sender: TObject);
@@ -50,7 +51,7 @@ implementation
 
 uses Unit_DM;
 
-
+//Realiza validação e o cadastro do usuário
 procedure TfrmCadastroUsuario.pnlCadastrarClick(Sender: TObject);
 
 var
@@ -82,18 +83,18 @@ begin
      (Trim(senhaUsu) = '') then
 
   begin
-    Application.MessageBox('Por favor, preencha todos os campos.', 'Aviso.');
+    Application.MessageBox('Por favor, preencha todos os campos.', 'Aviso');
     Exit;
   end;
 
   if Pos('@', emailUsu) = 0 then
   begin
-    Application.MessageBox('E-mail inv�lido!', 'Aviso.');
+    Application.MessageBox('E-mail inválido.', 'Aviso');
     Exit;
   end;
 
 
-  //Executa a a��o de cadastrar no BD
+  //Executa a ação de cadastrar no BD
   Try
     with DM.execUsu do
 
@@ -117,9 +118,9 @@ begin
     DM.selectUsu.Close;
     DM.selectUsu.Open;
 
-    Application.MessageBox('Usu�rio cadastrado com sucesso!', 'Confirma��o.');
+    Application.MessageBox('Usuário cadastrado com sucesso!', 'Confirmação');
 
-    //Limpa dados do formul�rio ap�s o cadastro
+    //Limpa dados do formulário após o cadastro
     edtNomeUsu.Clear;
     edtEmailUsu.Clear;
     edtLoginUsu.Clear;
@@ -132,7 +133,7 @@ begin
     on E: Exception do
     begin
       Application.MessageBox(
-        PChar('N�o foi poss�vel cadastrar o usu�rio.' + sLineBreak +
+        PChar('Não foi possível cadastrar o usuário.' + sLineBreak +
               'Motivo: ' + E.Message),
         PChar('Erro ao cadastrar'),
             MB_OK or MB_ICONERROR);
@@ -140,13 +141,13 @@ begin
   end;
 end;
 
-
+//Cor do botão ao entrar
 procedure TfrmCadastroUsuario.pnlCadastrarMouseEnter(Sender: TObject);
 begin
   pnlCadastrar.Color := $0000FF80;
 end;
 
-
+//Cor do botão ao sair
 procedure TfrmCadastroUsuario.pnlCadastrarMouseLeave(Sender: TObject);
 begin
   pnlCadastrar.Color := clgreen;
